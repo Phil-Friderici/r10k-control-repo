@@ -1,0 +1,10 @@
+---
+version: 5
+defaults:
+  data_hash: yaml_data
+  datadir: hieradata
+hierarchy:
+  - name: FQDN
+    path: nodes/%{::trusted.certname}.yaml
+  - name: Common
+    path: common.yaml
