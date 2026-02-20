@@ -10,6 +10,7 @@ class profile::book_postgresql {
   }
 
   class { 'puppetdb::database::postgresql':
+    manage_server    => false,
     listen_addresses => '172.31.31.135',
   }
 
