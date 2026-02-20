@@ -9,9 +9,13 @@ class profile::book_postgresql {
     listen_addresses => '127.0.0.1',
   }
 
-#  postgresql::server::extension { 'pg_trgm':
-#    database => 'puppetdb',
-#    require  => Postgresql::Server::Db['puppetdb'],
-#    before   => Service['puppetdb'],
-#  }
+  class { 'puppetdb::database::postgresql':
+    listen_addresses => '172.31.31.135',
+  }
+
+  postgresql::server::extension { 'pg_trgm':
+    database => 'puppetdb',
+    require  => Postgresql::Server::Db['puppetdb'],
+#    before   => Service['puppetdb'], # PuppetDB runs on other node
+  }
 }
