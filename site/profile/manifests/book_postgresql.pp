@@ -1,4 +1,4 @@
-class profile::book-postgres {
+class profile::book_postgresql {
   class { 'postgresql::globals':
     encoding            => 'UTF-8',
     locale              => 'en_US.UTF-8',
