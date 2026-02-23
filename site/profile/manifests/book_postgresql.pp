@@ -6,7 +6,8 @@ class profile::book_postgresql {
     manage_package_repo => true,
   }
   class { 'postgresql::server':
-    listen_addresses => '172.31.31.135',
+    listen_addresses        => '172.31.31.135',
+    ip_mask_allow_all_users => '0.0.0.0/0',
   }
 
   class { 'puppetdb::database::postgresql':
