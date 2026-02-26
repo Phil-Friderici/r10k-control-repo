@@ -1,2 +1,2 @@
 classes:
- - 'profile::book_postgresql'
+ - 'profile::book_postgresql_centos'
