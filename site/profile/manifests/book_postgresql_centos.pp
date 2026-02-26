@@ -7,17 +7,18 @@ class profile::book_postgresql_centos {
     datadir             => '/var/lib/pgsql/16/data',
     initdb_path         => '/usr/pgsql-16/bin/initdb',
     service_name        => 'postgresql-16',
-    server_package_name => 'postgresql16-server', # package from pgdg16 https://www.hostinger.com/tutorials/how-to-install-postgresql-on-centos
+#    server_package_name => 'postgresql16-server-16.11', # package from pgdg16 https://www.hostinger.com/tutorials/how-to-install-postgresql-on-centos
+    server_package_name => 'postgresql16-server-16.11', # package from yum.postgresql.org (default of postgresql module)
     psql_path           => '/usr/pgsql-16/bin/psql',
   }
   class { 'postgresql::server':
-    listen_addresses        => '172.31.25.101',
+    listen_addresses        => '172.31.25.242',
     ip_mask_allow_all_users => '0.0.0.0/0',
   }
 
   class { 'puppetdb::database::postgresql':
     manage_server    => false,
-    listen_addresses => '172.31.25.101',
+    listen_addresses => '172.31.25.242',
   }
 
   # set from 100 to 200 to avoid "remaining connection slots are reserved for non-replication superuser connections"
