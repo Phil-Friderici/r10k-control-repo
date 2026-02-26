@@ -1,3 +1,5 @@
 class profile::base {
-  class { '::ntp': }
+  if $facts['os']['name'] != 'CentOS' {
+    class { '::ntp': }
+  }
 }
