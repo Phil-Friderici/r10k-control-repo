@@ -12,13 +12,13 @@ class profile::book_postgresql_centos {
     psql_path           => '/usr/pgsql-16/bin/psql',
   }
   class { 'postgresql::server':
-    listen_addresses        => '172.31.25.242',
+    listen_addresses        => $facts['networking']['ip'],
     ip_mask_allow_all_users => '0.0.0.0/0',
   }
 
   class { 'puppetdb::database::postgresql':
     manage_server    => false,
-    listen_addresses => '172.31.25.242',
+    listen_addresses => $facts['networking']['ip'],
   }
 
   # set from 100 to 200 to avoid "remaining connection slots are reserved for non-replication superuser connections"
