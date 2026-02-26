@@ -4,11 +4,11 @@ class profile::book_postgresql_centos {
     locale              => 'en_US.UTF-8',
     version             => '16',
     manage_package_repo => true,
-    datadir             => '/var/lib/pgsql/data',
-    initdb_path         => '/bin/initdb',
-    service_name        => 'postgresql',
-    server_package_name => 'postgresql-server', # package from appstream https://bckinfo.com/how-to-install-postgresql-16-3-on-centos-stream-9/
-    psql_path           => '/bin/psql',
+    datadir             => '/var/lib/pgsql/16/data',
+    initdb_path         => '/usr/pgsql-16/bin/initdb',
+    service_name        => 'postgresql-16',
+    server_package_name => 'postgresql16-server', # package from pgdg16 https://www.hostinger.com/tutorials/how-to-install-postgresql-on-centos
+    psql_path           => '/usr/pgsql-16/bin/psql',
   }
   class { 'postgresql::server':
     listen_addresses        => '172.31.25.101',
