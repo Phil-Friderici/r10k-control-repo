@@ -8,7 +8,8 @@ class profile::book_postgresql_centos {
     initdb_path         => '/usr/pgsql-16/bin/initdb',
     service_name        => 'postgresql-16',
 #    server_package_name => 'postgresql16-server-16.11', # package from pgdg16 https://www.hostinger.com/tutorials/how-to-install-postgresql-on-centos
-    server_package_name => 'postgresql16-server-16.11', # package from yum.postgresql.org (default of postgresql module)
+    server_package_name  => 'postgresql16-server-16.11',  # package from yum.postgresql.org (default of postgresql module)
+    contrib_package_name => 'postgresql16-contrib-16.11', # package from yum.postgresql.org (default of postgresql module)
     psql_path           => '/usr/pgsql-16/bin/psql',
   }
   class { 'postgresql::server':
