@@ -1,35 +1,18 @@
 class profile::book_postgresql_centos {
-  class { 'postgresql::globals':
-    encoding            => 'UTF-8',
-    locale              => 'en_US.UTF-8',
-    version             => '16',
-    manage_package_repo => true,
-    datadir             => '/var/lib/pgsql/16/data',
-    initdb_path         => '/usr/pgsql-16/bin/initdb',
-    service_name        => 'postgresql-16',
-#    server_package_name => 'postgresql16-server-16.11', # package from pgdg16 https://www.hostinger.com/tutorials/how-to-install-postgresql-on-centos
-    server_package_name  => 'postgresql16-server-16.11',  # package from yum.postgresql.org (default of postgresql module)
-    contrib_package_name => 'postgresql16-contrib-16.11', # package from yum.postgresql.org (default of postgresql module)
-    psql_path           => '/usr/pgsql-16/bin/psql',
-  }
-  class { 'postgresql::server':
-    listen_addresses        => $facts['networking']['ip'],
-    ip_mask_allow_all_users => '0.0.0.0/0',
-  }
+#  class { 'postgresql::globals':
+#    encoding            => 'UTF-8',
+#    locale              => 'en_US.UTF-8',
+#    version             => '16',
+#    manage_package_repo => true,
+#    datadir             => '/var/lib/pgsql/16/data',
+#    initdb_path         => '/usr/pgsql-16/bin/initdb',
+#    service_name        => 'postgresql-16',
+#    server_package_name  => 'postgresql16-server-16.11',  # package from yum.postgresql.org (default of postgresql module)
+#    contrib_package_name => 'postgresql16-contrib-16.11', # package from yum.postgresql.org (default of postgresql module)
+#    psql_path           => '/usr/pgsql-16/bin/psql',
+#  }
 
   class { 'puppetdb::database::postgresql':
-    manage_server    => false,
-    listen_addresses => $facts['networking']['ip'],
-  }
-
-  # set from 100 to 200 to avoid "remaining connection slots are reserved for non-replication superuser connections"
-  postgresql::server::config_entry { 'max_connections':
-    value => 200,
-  }
-
-  postgresql::server::extension { 'pg_trgm':
-    database => 'puppetdb',
-    require  => Postgresql::Server::Db['puppetdb'],
-#    before   => Service['puppetdb'], # PuppetDB runs on other node
+    listen_addresses => '0.0.0.0',
   }
 }
