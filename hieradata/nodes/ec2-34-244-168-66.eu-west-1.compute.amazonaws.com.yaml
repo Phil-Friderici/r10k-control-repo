@@ -1,2 +1,2 @@
 classes:
- - 'profile::book_puppetdb'
+ - 'profile::book_puppetdb_centos'
