@@ -3,4 +3,11 @@ class profile::book_puppetdb_centos {
     database_host  => 'ec2-79-125-45-224.eu-west-1.compute.amazonaws.com',
     listen_address  => '0.0.0.0',
   }
+
+  firewalld_port { 'Open port 8080 in the public zone':
+    ensure   => present,
+    zone     => 'public',
+    port     => 8080,
+    protocol => 'tcp',
+  }
 }
