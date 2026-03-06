@@ -6,6 +6,6 @@ class profile::book_postgresql_centos {
 
   # set max connections from 100 to 200 to avoid "remaining connection slots are reserved for non-replication superuser connections"
   postgresql::server::config_entry { 'max_connections':
-    value => 200,
+    value => 1000,
   }
 }
