@@ -13,3 +13,9 @@ mod 'puppetlabs/apt',        '11.2.0'
 mod 'theforeman/puppet',     '22.1.0'
 mod 'puppet/extlib',          '7.5.1'
 mod 'puppet/systemd',         '9.4.0'
+
+# Operational Dashboard requirements
+mod 'puppetlabs-puppet_operational_dashboards', '3.0.0'
+mod 'puppet-grafana',                           '14.2.0'
+mod 'puppet-telegraf',                          '7.2.0'
+mod 'puppetlabs-influxdb',                      '3.0.0'
