@@ -1,5 +1,0 @@
-classes:
- - 'profile::book_postgresql_centos'
-
-postgresql::globals::server_package_name:  'postgresql16-server-16.11'
-postgresql::globals::contrib_package_name: 'postgresql16-contrib-16.11'
