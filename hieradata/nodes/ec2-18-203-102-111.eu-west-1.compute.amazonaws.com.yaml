@@ -2,7 +2,7 @@ classes:
  - 'profile::book_dashboard_centos'
 
 puppet_operational_dashboards::telegraf::agent::postgres_hosts:
- - 'ec2-18-201-130-210.eu-west-1.compute.amazonaws.com'
+ - 'ec2-52-31-116-165.eu-west-1.compute.amazonaws.com'
 puppet_operational_dashboards::telegraf::agent::puppetdb_hosts:
  - 'ec2-108-131-156-79.eu-west-1.compute.amazonaws.com'
  - 'ec2-54-170-54-75.eu-west-1.compute.amazonaws.com'
