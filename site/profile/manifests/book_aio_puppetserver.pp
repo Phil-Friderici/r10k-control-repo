@@ -7,7 +7,10 @@ class profile::book_aio_puppetserver {
     server_external_nodes => '',
   }
 
-  include puppetdb
+  class { 'puppetdb':
+    manage_firewall => false,
+  }
+
   class { 'puppet::server::puppetdb':
     server => 'ec2-108-130-189-34.eu-west-1.compute.amazonaws.com', # PuppetDB runs on Puppetmaster itself
   }
