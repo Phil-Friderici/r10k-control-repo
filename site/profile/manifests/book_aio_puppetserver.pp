@@ -5,6 +5,7 @@ class profile::book_aio_puppetserver {
     server_reports        => 'puppetdb,store',
     server_storeconfigs   => true,
     server_external_nodes => '',
+    autosign_entries      => ['*.load.client']
   }
 
   class { 'puppetdb':
