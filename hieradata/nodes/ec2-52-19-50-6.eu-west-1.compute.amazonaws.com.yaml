@@ -1,2 +1,2 @@
 classes:
- - 'profile::book_aio_puppetserver_new'
+ - 'profile::book_aio_primary'

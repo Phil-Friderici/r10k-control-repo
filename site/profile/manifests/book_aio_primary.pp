@@ -1,4 +1,4 @@
-class profile::book_aio_puppetserver_new {
+class profile::book_aio_primary {
   class { 'puppet':
     server                => true,
     server_foreman        => false,
