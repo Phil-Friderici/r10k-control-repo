@@ -11,7 +11,8 @@ class profile::book_aio_puppetserver_new {
   }
 
   class { 'puppetdb':
-    manage_firewall => false,
+    database_host        => 'ec2-52-211-193-160.eu-west-1.compute.amazonaws.com',
+    manage_firewall      => false,
     listen_address       => '0.0.0.0',
     open_ssl_listen_port => true,
     open_listen_port     => true,
