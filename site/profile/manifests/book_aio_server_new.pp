@@ -1,4 +1,11 @@
 class profile::book_aio_server_new {
+   $auth_allowlist = [
+                       'localhost',
+                       'ec2-18-203-153-206.eu-west-1.compute.amazonaws.com',
+                       'ec2-34-244-189-61.eu-west-1.compute.amazonaws.com',
+                       downcase($facts['networking']['fqdn']),
+                     ]
+
   class { 'puppet':
     server                     => true,
     server_foreman             => false,
@@ -10,6 +17,8 @@ class profile::book_aio_server_new {
     server_additional_settings => {storeconfigs_backend => 'puppetdb'},
     ca_server                  => 'ec2-52-19-50-6.eu-west-1.compute.amazonaws.com',
     server_ca                  => false,
+    server_ca_client_allowlist => $auth_allowlist,
+    server_admin_api_allowlist => $auth_allowlist,
   }
 
   class { 'puppetdb':

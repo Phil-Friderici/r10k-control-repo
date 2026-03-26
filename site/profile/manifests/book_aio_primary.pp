@@ -1,4 +1,11 @@
 class profile::book_aio_primary {
+   $auth_allowlist = [
+                       'localhost',
+                       'ec2-18-203-153-206.eu-west-1.compute.amazonaws.com',
+                       'ec2-34-244-189-61.eu-west-1.compute.amazonaws.com',
+                       downcase($facts['networking']['fqdn']),
+                     ]
+
   class { 'puppet':
     server                => true,
     server_foreman        => false,
@@ -8,6 +15,8 @@ class profile::book_aio_primary {
     autosign_entries      => ['*.load.client'],
     agent_additional_settings  => {server => puppet},
     server_additional_settings => {storeconfigs_backend => 'puppetdb'},
+    server_ca_client_allowlist => $auth_allowlist,
+    server_admin_api_allowlist => $auth_allowlist,
   }
 
   class { 'puppetdb':
